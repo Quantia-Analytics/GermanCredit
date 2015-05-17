@@ -1,9 +1,15 @@
-## Read the dataframe with the actual and predicted values.
-## This line will only work in Azure ML.
-compFrame <- maml.mapInputPort(1)
+## This code normally runs in Azure ML. By setting
+## the variable Azure to False, the code will run 
+## in R and RStudio.
+Azure <- FALSE
 
-## This code is for testing in RStudio only.
-compFrame <- outFrame
+if(Azure){
+  ## Read the dataframe with the actual and predicted values.
+  compFrame <- maml.mapInputPort(1)
+} else {
+  ## This code is for testing in RStudio only.
+  compFrame <- outFrame
+}
 
 Accurancy <- function(x){
     (x[1,1] + x[2,2]) / (x[1,1] + x[1,2] + x[2,1] + x[2,2])
@@ -33,4 +39,4 @@ mod2Conf <- data.frame( Category = c("Bad credit", "Good credit"),
                         Precision_F1 = c(Precision(res.count), F1(res.count)))
 
 ## Output the data frame if operating in Azure ML.
-maml.mapOutputPort('mod2Conf') 
+if(Azure) maml.mapOutputPort('mod2Conf') 
