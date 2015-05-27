@@ -143,40 +143,40 @@ fact.set  <- function(inframe, metaframe){
   inframe
 }
 
-fact.set2  <- function(inframe, metaframe){  
-  ## This function transforms the dataset to ensure ordered
-  ## factors are defined and to add descriptive column names.
-  numcol <- ncol(inframe) - 1
-  for(i in 1:numcol){
-    if(!is.numeric(inframe[, i])){
-      if(metaframe[i, 2]){
-        inframe[, i]  <- ordered(inframe[, i], 
-                                 levels = unlist(metaframe[i, 3]))
-        #        inframe[, i]  <- as.factor(inframe[, i])
-      }else{
-        inframe[, i]  <- as.factor(inframe[, i])
-      }
-    }
-  }
+#fact.set2  <- function(inframe, metaframe){  
+#  ## This function transforms the dataset to ensure ordered
+#  ## factors are defined and to add descriptive column names.
+#  numcol <- ncol(inframe) - 1
+#  for(i in 1:numcol){
+#    if(!is.numeric(inframe[, i])){
+#      if(metaframe[i, 2]){
+#        inframe[, i]  <- ordered(inframe[, i], 
+#                                 levels = unlist(metaframe[i, 3]))
+#        #        inframe[, i]  <- as.factor(inframe[, i])
+#      }else{
+#        inframe[, i]  <- as.factor(inframe[, i])
+#      }
+#    }
+#  }
   
-  inframe[, 21] <- as.factor(inframe[, 21]) 
-  colnames(inframe) <- c(as.character(metaframe[, 1]), "CreditStatus")
-  inframe
-}
+#  inframe[, 21] <- as.factor(inframe[, 21]) 
+# colnames(inframe) <- c(as.character(metaframe[, 1]), "CreditStatus")
+#  inframe
+#}
 
 
-fact.set3  <- function(inframe, metaframe){
-  ## This function transforms the dataset to ensure
-  ## factors are defined and to add descriptive column names.
-  numcol <- ncol(inframe) - 1
-  for(i in 1:numcol){
-    if(!is.numeric(inframe[, i])){
-      inframe[, i]  <- as.factor(inframe[, i])}
-  }
-  inframe[, 21] <- as.factor(inframe[, 21]) 
-  colnames(inframe) <- c(as.character(metaframe[, 1]), "CreditStatus")
-  inframe
-}
+#act.set3  <- function(inframe, metaframe){
+#  ## This function transforms the dataset to ensure
+# ## factors are defined and to add descriptive column names.
+#  numcol <- ncol(inframe) - 1
+#  for(i in 1:numcol){
+#    if(!is.numeric(inframe[, i])){
+#      inframe[, i]  <- as.factor(inframe[, i])}
+#  }
+#  inframe[, 21] <- as.factor(inframe[, 21]) 
+#  colnames(inframe) <- c(as.character(metaframe[, 1]), "CreditStatus")
+#  inframe
+#}
 
 
 
