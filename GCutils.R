@@ -33,7 +33,7 @@ colNames <- c("CheckingAcctStat",
               "ForeignWorker")
 
 ## Column names including the transformed columns
-colNames2 <- append(colNames, c("Durration_f", "CreditAmount_f", "Age_f"))
+colNames2 <- append(colNames, c("Duration_f", "CreditAmount_f", "Age_f"))
 
 ## Anaomouns functions to test the types in
 ## each of the columns in the dataset.
@@ -180,15 +180,19 @@ fact.set  <- function(inframe, metaframe){
 
 
 
-equ.Frame <- function(inframe, nrep){
+equ.Frame <- function(in.frame, nrep){
   nrep <- nrep - 1
   ## Build the dataframe with equal numbers of positive and negative responses
   ## and convert column 21 to a factor.  
   if(nrep > 0){
-    posFrame  <- inframe[inframe[,21] == 2, ]
-    inframe <- data.frame(Map(function(x,y){c(x, rep(y, nrep))}, inframe, posFrame))
+    posFrame  <- in.frame[in.frame[, "CreditStatus"] == 2, ]
+    posFrame <- posFrame[rep(seq_len(nrow(posFrame)), nrep), ]
+    print(str(posFrame))
+    in.frame <- rbind(in.frame, posFrame)
+#    in.frame <- data.frame(Map(function(x,y){rbind(x, rep(y, nrep))}, 
+#                               in.frame, posFrame))
   }
-  inframe
+  in.frame
 }
 
 serList <- function(serlist){
