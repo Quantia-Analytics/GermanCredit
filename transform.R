@@ -12,13 +12,12 @@ if(Azure){
   Credit <- read.csv("German Credit UCI.csv", header = F, stringsAsFactors = F )
   ## Build a data frame from the reference data
   metaFrame <- data.frame(colNames, isOrdered, I(factOrder))
-  ## Adjust the number of data rows to there are approximately
-  ## equal numbers in each category of the response.
+  ## Give the columns names and create factor variables
+  ## as required.
   Credit <- fact.set(Credit, metaFrame)
+  ## Approximately balance the number of good and bad credit cases. 
+  Credit <- equ.Frame(Credit, 2)
 }
-
-## Create the factor variables and assign column names. 
-Credit <- equ.Frame(Credit, 2)
 
 ## Make factors/categorical variables 
 ## from some numeric variables
