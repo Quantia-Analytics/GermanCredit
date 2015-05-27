@@ -27,7 +27,7 @@ if(Azure) {
 } else {  
   ## Or if not in Azure, make factors/categorical variables 
   ## from some numeric variables
-  toFactors <- c("Durration", "CreditAmount", "Age")
+  toFactors <- c("Duration", "CreditAmount", "Age")
   maxVals <- c(100, 1000000, 100)
   facNames <- unlist(lapply(toFactors, function(x) paste(x, "_f", sep = "")))
   Credit[, facNames] <- Map(function(x, y) quantize.num(Credit[, x], maxval = y),
