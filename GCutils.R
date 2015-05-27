@@ -12,7 +12,7 @@ quantize.num <- function(x, nlevs = 5, maxval = 1000,
 
 ## Descriptive names for the columns of the dataset.
 colNames <- c("CheckingAcctStat",
-              "Durration",
+              "Duration",
               "CreditHistory",
               "Purpose",
               "CreditAmount",
@@ -38,7 +38,7 @@ colNames2 <- append(colNames, c("Durration_f", "CreditAmount_f", "Age_f"))
 ## Anaomouns functions to test the types in
 ## each of the columns in the dataset.
 colTypes <- list(function(x) is.character(x), # CheckingAcctStat
-                 function(x) is.numeric(x), # Durration
+                 function(x) is.numeric(x), # Duration
                  function(x) is.character(x), # CreditHistory
                  function(x) is.character(x), # Purpose
                  function(x) is.numeric(x), # CreditAmount
@@ -62,7 +62,7 @@ colTypes <- list(function(x) is.character(x), # CheckingAcctStat
 
 
 colTypes2 <- list(function(x) is.factor(x), # CheckingAcctStat
-                 function(x) is.numeric(x), # Durration
+                 function(x) is.numeric(x), # Duration
                  function(x) is.factor(x), # CreditHistory
                  function(x) is.factor(x), # Purpose
                  function(x) is.numeric(x), # CreditAmount
