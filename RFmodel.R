@@ -4,17 +4,15 @@
 Azure <- FALSE
 
 if(Azure){
-  ## Source the zipped reference data, functions and packages
-  source("src/GCutils.R")
-  ## Read in the dataset. 
-  Credit <- maml.mapInputPort(1)
+  ## Assign a name to the dataset. 
+  Credit <- dataset
 }  
 
 ## Compute the random forest model and
 ## create the importance plot.
 library(randomForest)
-rf.mod <- randomForest( CreditStatus ~ CheckingAcctStat
-                        + Durration_f
+model <- randomForest( CreditStatus ~ CheckingAcctStat
+                        + Duration_f
                         + Purpose
                         + CreditHistory
                         + SavingsBonds
@@ -24,7 +22,3 @@ rf.mod <- randomForest( CreditStatus ~ CheckingAcctStat
                         data = Credit, 
                         ntree = 100, nodesize = 10)
 
-outFrame <- serList(list(credit.model = rf.mod))
-
-## Output the serialized model data frame
-if(Azure) maml.mapOutputPort("outFrame")

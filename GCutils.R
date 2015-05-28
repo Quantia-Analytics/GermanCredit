@@ -187,7 +187,6 @@ equ.Frame <- function(in.frame, nrep){
   if(nrep > 0){
     posFrame  <- in.frame[in.frame[, "CreditStatus"] == 2, ]
     posFrame <- posFrame[rep(seq_len(nrow(posFrame)), nrep), ]
-    print(str(posFrame))
     in.frame <- rbind(in.frame, posFrame)
 #    in.frame <- data.frame(Map(function(x,y){rbind(x, rep(y, nrep))}, 
 #                               in.frame, posFrame))
