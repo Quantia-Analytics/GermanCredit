@@ -15,13 +15,13 @@ if(Azure){
 
 ## Use dplyr to filter the missclassified rows.
 require(dplyr)
-creditTest <- cbind(creditTest, scored = outFrame$scored)
+creditTest <- cbind(creditTest, scored = scoreFrame[ ,2] )
 creditTest <- creditTest %>% filter(CreditStatus != scored)
 
 ## Plot the residuals for the levels of each factor
 ## variables
 require(ggplot2)
-colNames <- c("CheckingAcctStat", "Durration_f", "Purpose",
+colNames <- c("CheckingAcctStat", "Duration_f", "Purpose",
               "CreditHistory", "SavingsBonds", "Employment",
               "CreditAmount_f", "Employment")
 lapply(colNames, function(x){
@@ -34,7 +34,7 @@ lapply(colNames, function(x){
 
 ## Plot the residuals conditioned on CreditStatus vs.
 ## CheckingAcctStat.
-colNames <- c("Durration_f", "Purpose", "CreditHistory", 
+colNames <- c("Duration_f", "Purpose", "CreditHistory", 
               "SavingsBonds", "Employment", 
               "CreditAmount_f", "Employment")
 lapply(colNames, function(x){
