@@ -4,6 +4,10 @@
 Azure <- FALSE
 
 if(Azure){
+  ## Source the zipped reference data
+  source("src/GCutils.R")
+  ## Install the c50 package from the zip file
+  install.packages("src/C50_0.1.0-21.zip", lib = ".", repos = NULL, verbose = TRUE)
   ## Read the dataframe with the actual and predicted values.
   ## This line will only work in Azure ML.
   modelFrame <- maml.mapInputPort(1)
