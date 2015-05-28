@@ -5,23 +5,10 @@ Azure <- FALSE
 
 if(Azure){
   ## Source the zipped reference data
-  source("src/reference.R")
+  source("src/GCutils.R")
   ## Read in the training dataset. 
   Credit <- maml.mapInputPort(1)
 }
-
-## Explore imbalances between numbers of 
-## factor categories both in tables and charts.
-
-## Create a set of tables using CreditStatus
-## as a grouping variable
-library(dplyr)
-lapply(colNames2, function(x) {
-  if(is.factor(Credit[,x])){ 
-    factCol <- list(as.symbol(x))
-    Credit %>% 
-      group_by_(.dots = factCol, "CreditStatus") %>%
-      summarize(count = n())}})
 
 ## Some conditioned plots of the variables
 ## using ggplot2
