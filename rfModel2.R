@@ -27,8 +27,7 @@ rfModel2  <- C5.0(CreditStatus ~ CheckingAcctStat
                     + CreditHistory
                     + SavingsBonds
                     + Employment
-                    + CreditAmount_f
-                    + Employment, 
+                    + CreditAmount_f,
                     data = Credit,  
                   trials = 100, cost = Cost)
 

@@ -17,8 +17,7 @@ model <- randomForest( CreditStatus ~ CheckingAcctStat
                         + CreditHistory
                         + SavingsBonds
                         + Employment
-                        + CreditAmount_f
-                        + Employment, 
+                        + CreditAmount_f, 
                         data = Credit, 
                         ntree = 100, nodesize = 10)
 
