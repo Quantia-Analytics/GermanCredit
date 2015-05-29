@@ -24,7 +24,7 @@ Precision <- function(x){
   }
 
 W_Accuracy  <- function(x){
-  (x[1,1] + x[2,2]) / (x[1,1] + x[1,2] + 5 * x[2,1] + x[2,2])
+  (x[1,1] + x[2,2]) / (x[1,1] + 5 * x[1,2] + x[2,1] + x[2,2])
 }
   
 F1 <- function(x){
@@ -40,7 +40,7 @@ mod2Conf <- data.frame( Category = c("Bad credit", "Good credit"),
                         Clasified_as_bad = c(res.count[1,1], res.count[2,1]),
                         Clasified_as_good = c(res.count[1,2], res.count[2,2]),
                         Accuracy_Recall = c(Accurancy(res.count), Recall(res.count)),
-                        Precision_W_Acc = c(Precision(res.count), W_Accuracy(res.count)))
+                        Precision_WAcc = c(Precision(res.count), W_Accuracy(res.count)))
 
 ## Output the data frame if operating in Azure ML.
 if(Azure) maml.mapOutputPort('mod2Conf') 
