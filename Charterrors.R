@@ -34,9 +34,6 @@ lapply(colNames, function(x){
 
 ## Plot the residuals conditioned on CreditStatus vs.
 ## CheckingAcctStat.
-colNames <- c("Duration_f", "Purpose", "CreditHistory", 
-              "SavingsBonds", "Employment", 
-              "CreditAmount_f", "Employment")
 lapply(colNames, function(x){
   if(is.factor(creditTest[,x]) & x != "CheckingAcctStat") {
     ggplot(creditTest, aes(CheckingAcctStat)) +
