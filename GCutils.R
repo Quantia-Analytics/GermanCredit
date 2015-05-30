@@ -7,6 +7,7 @@ quantize.num <- function(x, nlevs = 5, maxval = 1000,
   cuts <- seq(min(x), max(x), length.out = nlevs + 1)
   cuts[1] <- minval
   cuts[nlevs + 1] <- maxval
+  print(cuts)
   x <- cut(x, breaks = cuts, order_result = ordered)
 }
 
