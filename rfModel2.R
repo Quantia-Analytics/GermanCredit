@@ -20,7 +20,7 @@ if(Azure){
 
 ## Compute the weighted random forest model.
 require(C50)
-Cost <- matrix(c(0, 1.25, 1, 0), nrow = 2, dimnames = list(c("1", "2"), c("1", "2")))
+Cost <- matrix(c(0, 1.5, 1, 0), nrow = 2, dimnames = list(c("1", "2"), c("1", "2")))
 rfModel2  <- C5.0(CreditStatus ~ CheckingAcctStat
                     + Duration_f
                     + Purpose
